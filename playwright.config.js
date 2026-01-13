@@ -27,7 +27,11 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: "https://example.cypress.io/",
+    baseURL: "https://qauto.forstudy.space/",
+    httpCredentials: {
+      username: "guest",
+      password: "welcome2qauto",
+    },
     //https://example.cypress.io/
     //https://qauto.forstudy.space/
 
