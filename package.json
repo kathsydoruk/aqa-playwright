@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "pw:test": "npx playwright test",
+    "pw:test:ui": "npx playwright test --ui", 
+    "pw:stg": "set ENV=stg&& npx playwright test",
+    "pw:stg:ui": "set ENV=stg&& npx playwright test --ui"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kathsydoruk/aqa-playwright.git"
@@ -19,5 +24,8 @@
   "devDependencies": {
     "@playwright/test": "^1.57.0",
     "@types/node": "^25.0.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
   }
 }
