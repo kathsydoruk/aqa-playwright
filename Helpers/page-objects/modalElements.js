@@ -66,6 +66,12 @@ export class Modals {
       "app-signin-modal button.btn.btn-primary"
     );
   }
+
+  async login(email, password) {
+    await this.signInEmailInput.fill(email);
+    await this.signInPasswordInput.fill(password);
+    await this.signInLoginButton.click();
+  }
 }
 
 export const createModals = (page) => new Modals(page);
