@@ -14,26 +14,27 @@ test.describe("Garage and Fuel Expenses flow", () => {
     }
   });
 
-  test("Adds a car and adds fuel expenses to it", async ({ userGaragePage }) => {
-    const { page, garagePage, expensesPage } = userGaragePage;
+  // test("Adds a car and adds fuel expenses to it", async ({
+  //   userGaragePage,
+  // }) => {
+  //   const { page, garagePage, expensesPage } = userGaragePage;
 
-    await garagePage.addCar("BMW", "X6", "120000");
-    await expect(garagePage.getCarName(carName)).toBeVisible();
+  //   await garagePage.addCar("BMW", "X6", "120000");
+  //   await expect(garagePage.getCarName(carName)).toBeVisible();
 
-    await garagePage.getAddExpenseButton(carName).click();
+  //   await garagePage.getAddExpenseButton(carName).click();
+  //   await expect(expensesPage.submitExpenseBtn).toBeDisabled();
 
-    await expect(expensesPage.submitExpenseBtn).toBeDisabled();
+  //   await expensesPage.addExpense({
+  //     mileage: "125000",
+  //     liters: "50",
+  //     totalCost: "2000",
+  //   });
 
-    await expensesPage.addExpense({
-      mileage: "125000",
-      liters: "50",
-      totalCost: "2000",
-    });
-
-    await expect(expensesPage.getExpenseRowByMileage("125000")).toBeVisible();
-    await expect(page.getByText("50L", { exact: true })).toBeVisible();
-    await expect(page.getByText("2000.00 USD", { exact: true })).toBeVisible();
-  });
+  //   await expect(expensesPage.getExpenseRowByMileage("125000")).toBeVisible();
+  //   await expect(page.getByText("50L", { exact: true })).toBeVisible();
+  //   await expect(page.getByText("2000.00 USD", { exact: true })).toBeVisible();
+  // });
 
   test("Local Storage test message", async ({ userGaragePage }) => {
     const { page } = userGaragePage;

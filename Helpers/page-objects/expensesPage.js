@@ -15,42 +15,42 @@ export class ExpensesPage {
   // ===== Add expense modal =====
   get vehicleSelect() {
     return this.baseElements.getElement(
-      "app-add-expense-modal select#addExpenseCar"
+      "app-add-expense-modal select#addExpenseCar",
     );
   }
 
   get reportDateInput() {
     return this.baseElements.getElement(
-      "app-add-expense-modal input#addExpenseDate"
+      "app-add-expense-modal input#addExpenseDate",
     );
   }
 
   get mileageInput() {
     return this.baseElements.getElement(
-      "app-add-expense-modal input#addExpenseMileage"
+      "app-add-expense-modal input#addExpenseMileage",
     );
   }
 
   get litersInput() {
     return this.baseElements.getElement(
-      "app-add-expense-modal input#addExpenseLiters"
+      "app-add-expense-modal input#addExpenseLiters",
     );
   }
 
   get totalCostInput() {
     return this.baseElements.getElement(
-      "app-add-expense-modal input#addExpenseTotalCost"
+      "app-add-expense-modal input#addExpenseTotalCost",
     );
   }
 
   get submitExpenseBtn() {
-    return this.baseElements.getByText("app-add-expense-modal button", "Add");
+    return this.page.locator("app-add-expense-modal button.btn.btn-primary");
   }
 
   get cancelExpenseBtn() {
     return this.baseElements.getByText(
       "app-add-expense-modal button",
-      "Cancel"
+      "Cancel",
     );
   }
 
@@ -61,13 +61,13 @@ export class ExpensesPage {
 
   get carDropdownMenu() {
     return this.baseElements.getElement(
-      'ul[aria-labelledby="carSelectDropdown"]'
+      'ul[aria-labelledby="carSelectDropdown"]',
     );
   }
 
   get carDropdownItems() {
     return this.baseElements.getElement(
-      'ul[aria-labelledby="carSelectDropdown"] li'
+      'ul[aria-labelledby="carSelectDropdown"] li',
     );
   }
 
@@ -81,6 +81,8 @@ export class ExpensesPage {
 
   // ===== Actions =====
   async addExpense({ mileage, liters, totalCost }) {
+    const modal = this.page.locator("app-add-expense-modal");
+    await expect(modal).toBeVisible();
     await expect(this.mileageInput).toBeVisible();
 
     await this.mileageInput.fill(String(mileage));
@@ -88,15 +90,14 @@ export class ExpensesPage {
     await this.totalCostInput.fill(String(totalCost));
 
     await this.submitExpenseBtn.click();
+    await expect(modal).toBeHidden();
   }
 
   async selectCar(carName) {
     await this.carDropdownButton.click();
     await expect(this.carDropdownMenu).toBeVisible();
 
-    const carItem = this.carDropdownItems
-      .filter({ hasText: carName })
-      .first();
+    const carItem = this.carDropdownItems.filter({ hasText: carName }).first();
 
     await expect(carItem).toBeVisible();
     await carItem.click();
@@ -105,9 +106,7 @@ export class ExpensesPage {
   }
 
   getExpenseRowByMileage(mileage) {
-    return this.expenseRows
-      .filter({ hasText: String(mileage) })
-      .first();
+    return this.expenseRows.filter({ hasText: String(mileage) }).first();
   }
 
   async assertExpenseRow({ mileage, liters, totalCost, date }) {

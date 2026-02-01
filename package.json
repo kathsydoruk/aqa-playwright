@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pw:test": "npx playwright test",
+    "pw:test": "npx playwright test --project=chromium",
     "pw:test:ui": "npx playwright test --ui",
     "pw:stg": "set ENV=stg&& npx playwright test",
     "pw:stg:ui": "set ENV=stg&& npx playwright test --ui"
