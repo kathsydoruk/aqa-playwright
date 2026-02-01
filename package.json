@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/kathsydoruk/aqa-playwright#readme",
   "devDependencies": {
-    "@playwright/test": "^1.57.0",
+    "@playwright/test": "^1.58.1",
     "@types/node": "^25.0.3",
     "allure-playwright": "^3.4.5"
   },
