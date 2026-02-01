@@ -18,6 +18,9 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.58.0-noble
 
+    env:
+      HOME: /root
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,10 +34,8 @@ jobs:
           npm -v
           npx playwright --version
 
-      
-
-      - name: Ensure Playwright browsers (safe)
-        run: npx playwright install --with-deps
+      - name: Ensure Playwright browsers
+        run: npx playwright install
 
       - name: Run Playwright tests
         env:
